@@ -41,11 +41,15 @@ def task_5():
     revenue = int(input('Введите выручку: '))
     costs = int(input('Введите издержки: '))
 
-    if costs > revenue: return print('Убыток')
-    print('Рентабильность прибыли', round(revenue / costs, 2))
+    profit = revenue - costs
+
+    if profit < 0: return print('Убыток')
+    if profit == 0: return print('Вы вышли в ноль')
+
+    print('Рентабильность ', round(profit / revenue, 2))
 
     staff_amount = int(input('Введите количество сотрудников: '))
-    print('Прибыль в расчете на сотрудника', round(revenue / staff_amount, 2))
+    print('Прибыль в расчете на сотрудника', round(profit / staff_amount, 2))
 
 
 def task_6():
