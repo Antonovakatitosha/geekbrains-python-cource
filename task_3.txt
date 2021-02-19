@@ -1,0 +1,12 @@
+Frank 50000
+Owen 30000
+Elliott 15000
+Brooks 20000
+Ward 19000
+Casey 80000
+Watson 120000
+Waters 12000
+Cervantes 40000
+Pollard 4000
+Scott 8000
+Wilkerson 90000
