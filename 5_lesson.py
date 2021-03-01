@@ -1,4 +1,5 @@
 from functools import reduce
+import json
 
 
 def task_1():
@@ -49,10 +50,46 @@ def task_5():
 
 
 def task_6():
-    pass
+    dict = {}
+    with open('task_6.txt', 'r') as f:
+        for line in f:
+            dict[f'{line[:line.find(":")]}'] = \
+                sum([get_hours(line, '(л)'), get_hours(line, '(пр)'), get_hours(line, '(лаб)')])
+        print(dict)
 
-# task_1()
-# task_2()
-# task_3()
-# task_4()
-# task_5()
+
+def get_hours(str, name):
+    end = str.find(name)
+    if end < 0: return 0
+    spaces = [pos for pos in range(len(str)) if str[pos] == ' ' and pos < end]
+    return int(str[spaces[-1]: end])
+
+
+def task_7():
+    average_profit, quantity = 0, 0
+    firms = []
+
+    with open('task_7.txt', 'r') as f:
+        for line in f:
+            spaces_pos = [pos for pos in range(len(line)) if line[pos] == ' ']
+            profit = int(line[spaces_pos[1] + 1: spaces_pos[2]]) - int(line[spaces_pos[2] + 1:])
+            firms.append({line[:spaces_pos[0]]: profit})
+
+            if profit >= 0:
+                average_profit += profit
+                quantity += 1
+
+    average_profit /= quantity
+    firms.append({'average_profit': average_profit})
+
+    with open('task_7_result.py', 'w') as f:
+        f.write(json.dumps(firms))
+
+
+task_1()
+task_2()
+task_3()
+task_4()
+task_5()
+task_6()
+task_7()
